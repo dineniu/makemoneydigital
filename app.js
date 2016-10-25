@@ -12,7 +12,8 @@ Genre = require('./models/genre');
 Book = require('./models/book');
 
 //Connect to DB
-mongoose.connect('mongodb://admin:212230@jello.modulusmongo.net:27017/e5rEqazi');
+//mongoose.connect('mongodb://admin:212230@jello.modulusmongo.net:27017/e5rEqazi');
+mongoose.connect(OPENSHIFT_MONGODB_DB_URL + OPENSHIFT_APP_NAME);
 var db = mongoose.connection;
 
 app.get('/',function(req, res){
