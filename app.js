@@ -11,8 +11,22 @@ app.use(bodyParser.json());
 Genre = require('./models/genre');
 Book = require('./models/book');
 
+var ip_addr = process.env.OPENSHIFT_NODEJS_IP   || '127.0.0.1';
+var port    = process.env.OPENSHIFT_NODEJS_PORT || '8080';
+// default to a 'localhost' configuration:
+var connection_string = '127.0.0.1:27017/t1234';
+// if OPENSHIFT env variables are present, use the available connection info:
+if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+  connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+  process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+  process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+  process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+  process.env.OPENSHIFT_APP_NAME;
+}
+
+
 //Connect to DB
-mongoose.connect('mongodb://usuario:usuario123@10.1.81.14:27017/');
+mongoose.connect('mongodb://'+connection_string);
 var db = mongoose.connection;
 
 app.get('/',function(req, res){
@@ -57,5 +71,5 @@ app.get('/api/books/:_id',function(req, res){
 	});
 });
 
-var port = process.env.PORT || 8080;
 app.listen(port);
+console.log("Porta: "+port);
