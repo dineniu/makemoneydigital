@@ -12,7 +12,7 @@ Genre = require('./models/genre');
 Book = require('./models/book');
 
 //Connect to DB
-mongoose.connect('mongodb://admin:212230@jello.modulusmongo.net:27017/e5rEqazi');
+mongoose.connect('mongodb://usuario:usuario123@172.30.141.199:27017/');
 var db = mongoose.connection;
 
 app.get('/',function(req, res){
