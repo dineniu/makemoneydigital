@@ -13,7 +13,7 @@ Book = require('./models/book');
 
 var port    = process.env.APP_PORT || '8080';
 // default to a 'localhost' configuration:
-var connection_string = 'usuario:usuario123@172.30.141.199:27017/t1234';
+var connection_string = 'admin:admin123@172.30.141.199:27017/t1234';
 // if OPENSHIFT env variables are present, use the available connection info:
 /*if(process.env.MONGODB_PASSWORD){
   connection_string = process.env.MONGODB_USER + ":" +
