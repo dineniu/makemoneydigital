@@ -26,7 +26,7 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
 
 
 //Connect to DB
-mongoose.connect('mongodb://'+connection_string);
+mongoose.connect(OPENSHIFT_MONGODB_DB_URL+OPENSHIFT_APP_NAME);
 var db = mongoose.connection;
 
 app.get('/',function(req, res){
