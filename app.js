@@ -17,6 +17,7 @@ app.use(express.cookieParser());
 app.use(express.methodOverride());
 app.use(express.json());
 app.use(express.urlencoded());
+app.set('port', 8080);
 
 app.get('/(validate)?', function(req, res) {
 
@@ -51,8 +52,7 @@ app.post('/validate', function(req, res) {
         }
     });
 });        
-var port = process.env.PORT || 8080;
-app.listen(port);
+
 //Launch the HTTP server
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
