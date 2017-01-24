@@ -1,11 +1,11 @@
-var express    = require('express');
+var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var path = require('path');
+var path = require('path');
 
 
-var publicDir = path.join(__dirname, 'public')
+var publicDir = path.join(__dirname, 'public')
 app.use(bodyParser.json());
 
 Genre = require('./models/genre');
@@ -18,7 +18,7 @@ mongoose.connect('mongodb://usuario:usuario123@172.30.165.103:27017/testedb');
 var db = mongoose.connection;
 
 app.get('/',function(req, res){
-	 res.sendFile(path.join(publicDir, 'index.html'));
+	 res.sendFile(path.join(publicDir, 'index.html'));
 });
 
 app.get('/api/genres',function(req, res){
