@@ -3,14 +3,14 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var path = require('path');
-var Solvemedia = require('./lib/solvemedia');
+
 
 var publicDir = path.join(__dirname, 'public')
 app.use(bodyParser.json());
 
 Genre = require('./models/genre');
 Book = require('./models/book');
-
+Solvemedia = require('./lib/solvemedia');
 //Connect to DB
 
 mongoose.connect('mongodb://usuario:usuario123@172.30.165.103:27017/testedb');
