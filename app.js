@@ -18,19 +18,7 @@ mongoose.connect('mongodb://usuario:usuario123@172.30.165.103:27017/testedb');
 var db = mongoose.connection;
 
 
-app.get('/(validate)?', function(req, res) {
 
-    var solvemedia = new Solvemedia('HdETkCNNkpqCIuBAU90dEO4CjZn.5UpT','-6Hb8iRfq3yvLH9Rr80uobcOqswPpMcZ', 'YJzbSgW5YN0b8ECv455mmYoD6Oosza9K');
-    res.render('register', {
-        layout: false,
-        locals: {
-            name        : '',
-            captcha     : solvemedia.toHTML(), 
-            errorMessage: ''
-                
-        }
-    });
-});
 
 app.post('/validate', function(req, res) {
     var solvemedia = new Solvemedia('HdETkCNNkpqCIuBAU90dEO4CjZn.5UpT','-6Hb8iRfq3yvLH9Rr80uobcOqswPpMcZ', 'YJzbSgW5YN0b8ECv455mmYoD6Oosza9K');
@@ -52,8 +40,9 @@ app.post('/validate', function(req, res) {
     });
 });        
 
-app.get('/bitcoin',function(req, res){
-	 res.sendFile(path.join(publicDir, 'index.html'));
+app.get('/',function(req, res){
+	var solvemedia = new Solvemedia('HdETkCNNkpqCIuBAU90dEO4CjZn.5UpT','-6Hb8iRfq3yvLH9Rr80uobcOqswPpMcZ', 'YJzbSgW5YN0b8ECv455mmYoD6Oosza9K');
+	 res.send(solvemedia.toHTML());
 });
 
 app.get('/api/genres',function(req, res){
