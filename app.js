@@ -6,14 +6,6 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var path = require('path');
 
-
-//Express config
-app.use(express.logger());
-app.use(express.cookieParser());
-app.use(express.methodOverride());
-app.use(express.json());
-app.use(express.urlencoded());
-
 var publicDir = path.join(__dirname, 'public')
 app.use(bodyParser.json());
 
