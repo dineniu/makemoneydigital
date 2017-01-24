@@ -20,33 +20,13 @@ Solvemedia = require('./lib/solvemedia');
 mongoose.connect('mongodb://usuario:usuario123@172.30.165.103:27017/testedb');
 //mongoose.connect(OPENSHIFT_MONGODB_DB_URL + OPENSHIFT_APP_NAME);
 var db = mongoose.connection;
-
-
-
-
-app.post('/validate', function(req, res) {
-    var solvemedia = new Solvemedia('HdETkCNNkpqCIuBAU90dEO4CjZn.5UpT','-6Hb8iRfq3yvLH9Rr80uobcOqswPpMcZ', 'YJzbSgW5YN0b8ECv455mmYoD6Oosza9K');
-    
-    solvemedia.verify(req.body.adcopy_response,req.body.adcopy_challenge, req.connection.remoteAddress, function(isValid,errorMessage){
-        if (isValid) {
-            res.send('Hi ' + req.body.name + ', Solvemedia told me that you are not a robot!!');
-        } else {
-            // Redisplay the form.
-            res.render('register', {
-                layout: false,
-                locals: {
-                    name        : req.body.name,
-                    captcha     : solvemedia.toHTML(),                  
-                    errorMessage: errorMessage
-                }
-            });                            
-        }
-    });
-});        
+   
 
 app.get('/',function(req, res){
 	var solvemedia = new Solvemedia('HdETkCNNkpqCIuBAU90dEO4CjZn.5UpT','-6Hb8iRfq3yvLH9Rr80uobcOqswPpMcZ', 'YJzbSgW5YN0b8ECv455mmYoD6Oosza9K');
-	 res.send(solvemedia.toHTML());
+	var inicio = "<html><head><title>Solvemedia test!</title></head><body><form method='POST' action='./validate'>";
+	var fim = "<input type="submit" value='Submit Form'/></form></body></html>";
+	res.send(inicio+solvemedia.toHTML()+fim);
 });
 
 app.get('/api/genres',function(req, res){
