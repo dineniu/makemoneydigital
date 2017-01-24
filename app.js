@@ -5,9 +5,15 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var path = require('path');
+Solvemedia = require('solvemedia');
+
 
 var publicDir = path.join(__dirname, 'public')
 app.use(bodyParser.json());
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.engine('ejs', require('ejs-locals'));
 
 Genre = require('./models/genre');
 Book = require('./models/book');
