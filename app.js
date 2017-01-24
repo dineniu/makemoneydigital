@@ -10,7 +10,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.engine('ejs', require('ejs-locals'));
 
-//Express config
+//Exress config
 app.use(express.logger());
 app.use(express.cookieParser());
 app.use(express.methodOverride());
@@ -22,9 +22,7 @@ app.get('/', function(req, res) {
 
    //var solvemedia = new Solvemedia('PUBLIC_KEY','PRIVATE_KEY', 'AUTHENTICATION_KEY');
     res.send('Hello World!');
-});
-
-app.get('/validate', function(req, res) {
+    }/*        app.get('/validate', function(req, res) {
 
     var solvemedia = new Solvemedia('PUBLIC_KEY','PRIVATE_KEY', 'AUTHENTICATION_KEY');
     res.render('register', {
@@ -56,7 +54,7 @@ app.post('/validate', function(req, res) {
             });                            
         }
     });
-});        
+});  */      
 
 //Launch the HTTP server
 http.createServer(app).listen(app.get('port'), function(){
