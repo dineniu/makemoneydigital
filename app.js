@@ -6,7 +6,11 @@ var path = require('path');
 
 
 var publicDir = path.join(__dirname, 'public')
-app.use(bodyParser.json());
+app.use(express.logger());
+app.use(express.cookieParser());
+app.use(express.methodOverride());
+app.use(express.json());
+app.use(express.urlencoded());
 
 Genre = require('./models/genre');
 Book = require('./models/book');
