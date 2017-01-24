@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var path = require('path');
-var Solvemedia = require('../lib/solvemedia');
+var Solvemedia = require('./lib/solvemedia');
 
 var publicDir = path.join(__dirname, 'public')
 app.use(bodyParser.json());
