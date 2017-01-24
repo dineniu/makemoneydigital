@@ -17,7 +17,6 @@ app.use(express.cookieParser());
 app.use(express.methodOverride());
 app.use(express.json());
 app.use(express.urlencoded());
-app.set('port', 8080);
 
 app.get('/(validate)?', function(req, res) {
 
