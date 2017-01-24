@@ -1,9 +1,18 @@
-var express = require('express');
+var express    = require('express'),
+    http       = require('http');
+    Solvemedia = require('../../lib/solvemedia');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var path = require('path');
-var Solvemedia = require('solvemedia');
+
+
+//Express config
+app.use(express.logger());
+app.use(express.cookieParser());
+app.use(express.methodOverride());
+app.use(express.json());
+app.use(express.urlencoded());
 
 var publicDir = path.join(__dirname, 'public')
 app.use(bodyParser.json());
