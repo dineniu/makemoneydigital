@@ -18,7 +18,13 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.set('port', 8080);
 
-app.get('/(validate)?', function(req, res) {
+app.get('/', function(req, res) {
+
+   //var solvemedia = new Solvemedia('PUBLIC_KEY','PRIVATE_KEY', 'AUTHENTICATION_KEY');
+    res.send('Hello World!');
+});
+
+app.get('/validate', function(req, res) {
 
     var solvemedia = new Solvemedia('PUBLIC_KEY','PRIVATE_KEY', 'AUTHENTICATION_KEY');
     res.render('register', {
