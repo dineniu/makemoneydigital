@@ -11,11 +11,11 @@ app.set('view engine', 'ejs');
 app.engine('ejs', require('ejs-locals'));
 
 //Exress config
-app.use(express.logger());
+/*app.use(express.logger());
 app.use(express.cookieParser());
 app.use(express.methodOverride());
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded());*/
 app.set('port', 8080);
 
 app.get('/', function(req, res) {
