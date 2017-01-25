@@ -5,12 +5,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 
 
-var publicDir = path.join(__dirname, 'views')
-app.use(express.logger());
-app.use(express.cookieParser());
-app.use(express.methodOverride());
-app.use(express.json());
-app.use(express.urlencoded());
+var publicDir = path.join(__dirname, 'public')
 
 Genre = require('./models/genre');
 Book = require('./models/book');
