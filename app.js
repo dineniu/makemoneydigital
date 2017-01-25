@@ -6,11 +6,8 @@ var path = require('path');
 //var cors = require('cors');
 
 var publicDir = path.join(__dirname, 'public')
-app.use(express.logger());
-app.use(express.cookieParser());
-app.use(express.methodOverride());
-app.use(express.json());
-app.use(express.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 //app.use(cors());
 
 Genre = require('./models/genre');
@@ -30,6 +27,7 @@ app.post('/verificar',function(req, res){
             res.send('Hi ' + req.body.name + ', Solvemedia told me that you are not a robot!!');
         } else {
             // Redisplay the form.
+		console.log(req.body);
 		res.send(req.body.adcopy_response+", "+req.body.adcopy_challenge+", "+req.connection.remoteAddress);
             //res.sendFile(path.join(publicDir, 'bitcoin.html'));                            
         }
