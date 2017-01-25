@@ -19,7 +19,7 @@ var db = mongoose.connection;
 app.get('/',function(req, res){
 	 res.sendFile(path.join(publicDir, 'index.html'));
 });
-app.get('/verificar',function(req, res){
+/*app.get('/verificar',function(req, res){
 	var solvemedia = new Solvemedia('HdETkCNNkpqCIuBAU90dEO4CjZn.5UpT','-6Hb8iRfq3yvLH9Rr80uobcOqswPpMcZ', 'YJzbSgW5YN0b8ECv455mmYoD6Oosza9K');
 	solvemedia.verify(req.body.adcopy_response,req.body.adcopy_challenge, req.connection.remoteAddress, function(isValid,errorMessage){
         if (isValid) {
@@ -29,7 +29,7 @@ app.get('/verificar',function(req, res){
             res.sendFile(path.join(publicDir, 'index.html'));                            
         }
     });
-});
+});*/
 
 app.get('/bitcoin',function(req, res){
 	 res.sendFile(path.join(publicDir, 'bitcoin.html'));
