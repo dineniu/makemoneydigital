@@ -1,70 +1,72 @@
-var express    = require('express'),
-    http       = require('http');
-    Solvemedia = require('./lib/solvemedia');
-
-
+var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+//var mongoose = require('mongoose');
+var path = require('path');
 
-//render
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-app.engine('ejs', require('ejs-locals'));
 
-//Exress config
-/*app.use(express.logger());
+var publicDir = path.join(__dirname, 'views')
+app.use(express.logger());
 app.use(express.cookieParser());
 app.use(express.methodOverride());
 app.use(express.json());
-app.use(express.urlencoded());*/
-app.set('port', 8080);
+app.use(express.urlencoded());
 
-app.get('/', function(req, res) {
+Genre = require('./models/genre');
+Book = require('./models/book');
+Solvemedia = require('./lib/solvemedia');
+//Connect to DB
 
-   //var solvemedia = new Solvemedia('PUBLIC_KEY','PRIVATE_KEY', 'AUTHENTICATION_KEY');
-    res.render('register', {
-        layout: false,
-        locals: {
-            name        : '',
-            captcha     : "<a href='#'>link criado pelo nei</a>", 
-            errorMessage: ''
-                
-        }
-    });
-    }/*        app.get('/validate', function(req, res) {
+//mongoose.connect('mongodb://usuario:usuario123@172.30.165.103:27017/testedb');
+//mongoose.connect(OPENSHIFT_MONGODB_DB_URL + OPENSHIFT_APP_NAME);
+//var db = mongoose.connection;
+   
 
-    var solvemedia = new Solvemedia('PUBLIC_KEY','PRIVATE_KEY', 'AUTHENTICATION_KEY');
-    res.render('register', {
-        layout: false,
-        locals: {
-            name        : '',
-            captcha     : solvemedia.toHTML(), 
-            errorMessage: ''
-                
-        }
-    });
+app.get('/',function(req, res){
+	//var solvemedia = new Solvemedia('HdETkCNNkpqCIuBAU90dEO4CjZn.5UpT','-6Hb8iRfq3yvLH9Rr80uobcOqswPpMcZ', 'YJzbSgW5YN0b8ECv455mmYoD6Oosza9K');
+	//var inicio = "<html><head><title>Solvemedia test!</title></head><body><form method='POST' action='./validate'>";
+	//var fim = "<input type='submit' value='Submit Form'/></form></body></html>";
+	//res.send(inicio+solvemedia.toHTML()+fim);
+    res.sendFile(path.join(publicDir, 'bitcoin.html'));
 });
 
-app.post('/validate', function(req, res) {
-    var solvemedia = new Solvemedia('PUBLIC_KEY','PRIVATE_KEY', 'AUTHENTICATION_KEY');
-    
-    solvemedia.verify(req.body.adcopy_response,req.body.adcopy_challenge, req.connection.remoteAddress, function(isValid,errorMessage){
-        if (isValid) {
-            res.send('Hi ' + req.body.name + ', Solvemedia told me that you are not a robot!!');
-        } else {
-            // Redisplay the form.
-            res.render('register', {
-                layout: false,
-                locals: {
-                    name        : req.body.name,
-                    captcha     : solvemedia.toHTML(),                  
-                    errorMessage: errorMessage
-                }
-            });                            
-        }
-    });
-});  */      
-
-//Launch the HTTP server
-http.createServer(app).listen(app.get('port'), function(){
-    console.log('Express server listening on port ' + app.get('port'));
+app.get('/api/genres',function(req, res){
+	Genre.getGenres(function(err, genres){
+		if(err){
+			throw err;
+		}
+		res.json(genres);
+	});
 });
+
+app.post('/api/genres',function(req, res){
+	var genre = req.body;
+
+	Genre.addGenres(genre, function(err, genre){
+		if(err){
+			throw err;
+		}
+		res.json(genre);
+	});
+});
+
+app.get('/api/books',function(req, res){
+	Book.getBooks(function(err, books){
+		if(err){
+			throw err;
+		}
+		res.json(books);
+	});
+});
+
+app.get('/api/books/:_id',function(req, res){
+	Book.getBookById(req.params._id,function(err, book){
+		if(err){
+			throw err;
+		}
+		res.json(book);
+	});
+});
+
+var port = process.env.PORT || 8080;
+app.listen(port);
