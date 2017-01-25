@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 Genre = require('./models/genre');
 Book = require('./models/book');
-SolveMedia = require('solvemedia');
+SolveMedia = require('./solvemedia');
 //Connect to DB
 mongoose.connect('mongodb://admin:212230@jello.modulusmongo.net:27017/e5rEqazi');
 var db = mongoose.connection;
