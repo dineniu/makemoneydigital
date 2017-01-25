@@ -26,7 +26,8 @@ app.post('/verificar',function(req, res){
             res.send('Hi ' + req.body.name + ', Solvemedia told me that you are not a robot!!');
         } else {
             // Redisplay the form.
-            res.sendFile(path.join(publicDir, 'bitcoin.html'));                            
+		res.send(errorMessage);
+            //res.sendFile(path.join(publicDir, 'bitcoin.html'));                            
         }
     });
 });
