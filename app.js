@@ -16,13 +16,6 @@ Book = require('./models/book');
 mongoose.connect('mongodb://admin:212230@jello.modulusmongo.net:27017/e5rEqazi');
 var db = mongoose.connection;
 
-var Client = require('coinbase').Client;
-
-var client = new Client({
-  'apiKey': 'spkYGYCph574X8PU',
-  'apiSecret': '0rbeav1utlzgdf5w6I2fuVROEJnlXmp0',
-});
-
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', 'http://controlevenda.herokuapp.com');
