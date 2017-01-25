@@ -21,7 +21,7 @@ app.get('/',function(req, res){
 });
 app.post('/verificar',function(req, res){
 	var solvemedia = new SolveMedia('HdETkCNNkpqCIuBAU90dEO4CjZn.5UpT','-6Hb8iRfq3yvLH9Rr80uobcOqswPpMcZ', 'YJzbSgW5YN0b8ECv455mmYoD6Oosza9K');
-	solvemedia.verify(req.body.adcopy_response,req.body.adcopy_challenge, req.connection.remoteAddress, function(isValid,errorMessage){
+	solvemedia.verify(req.body.adcopy_response,req.body.adcopy_challenge, '177.183.162.140', function(isValid,errorMessage){
         if (isValid) {
             res.send('Hi ' + req.body.name + ', Solvemedia told me that you are not a robot!!');
         } else {
