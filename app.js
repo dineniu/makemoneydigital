@@ -21,7 +21,15 @@ app.set('port', 8080);
 app.get('/', function(req, res) {
 
    //var solvemedia = new Solvemedia('PUBLIC_KEY','PRIVATE_KEY', 'AUTHENTICATION_KEY');
-    res.send('Hello World!');
+    res.render('register', {
+        layout: false,
+        locals: {
+            name        : '',
+            captcha     : "<a href='#'>link criado pelo nei</a>", 
+            errorMessage: ''
+                
+        }
+    });
     }/*        app.get('/validate', function(req, res) {
 
     var solvemedia = new Solvemedia('PUBLIC_KEY','PRIVATE_KEY', 'AUTHENTICATION_KEY');
