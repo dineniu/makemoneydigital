@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 Genre = require('./models/genre');
 Book = require('./models/book');
-
+SolveMedia = require('solvemedia');
 //Connect to DB
 mongoose.connect('mongodb://admin:212230@jello.modulusmongo.net:27017/e5rEqazi');
 var db = mongoose.connection;
@@ -33,6 +33,18 @@ app.use(function (req, res, next) {
 app.get('/',function(req, res){
 	 res.sendFile(path.join(publicDir, 'index.html'));
 });
+app.get('/verificar',function(req, res){
+	var solvemedia = new Solvemedia('HdETkCNNkpqCIuBAU90dEO4CjZn.5UpT','-6Hb8iRfq3yvLH9Rr80uobcOqswPpMcZ', 'YJzbSgW5YN0b8ECv455mmYoD6Oosza9K');
+	solvemedia.verify(req.body.adcopy_response,req.body.adcopy_challenge, req.connection.remoteAddress, function(isValid,errorMessage){
+        if (isValid) {
+            res.send('Hi ' + req.body.name + ', Solvemedia told me that you are not a robot!!');
+        } else {
+            // Redisplay the form.
+            res.sendFile(path.join(publicDir, 'index.html'));                            
+        }
+    });
+});
+
 app.get('/bitcoin',function(req, res){
 	 res.sendFile(path.join(publicDir, 'bitcoin.html'));
 });
