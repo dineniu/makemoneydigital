@@ -1,28 +1,47 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-//var mongoose = require('mongoose');
-var path = require('path');
+var mongoose = require('mongoose');
+var path = require('path');
+//var cors = require('cors');
 
-
-var publicDir = path.join(__dirname, 'public')
+var publicDir = path.join(__dirname, 'public')
+app.use(bodyParser.json());
+//app.use(cors());
 
 Genre = require('./models/genre');
 Book = require('./models/book');
-Solvemedia = require('./lib/solvemedia');
-//Connect to DB
 
-//mongoose.connect('mongodb://usuario:usuario123@172.30.165.103:27017/testedb');
-//mongoose.connect(OPENSHIFT_MONGODB_DB_URL + OPENSHIFT_APP_NAME);
-//var db = mongoose.connection;
-   
+//Connect to DB
+mongoose.connect('mongodb://admin:212230@jello.modulusmongo.net:27017/e5rEqazi');
+var db = mongoose.connection;
+
+var Client = require('coinbase').Client;
+
+var client = new Client({
+  'apiKey': 'spkYGYCph574X8PU',
+  'apiSecret': '0rbeav1utlzgdf5w6I2fuVROEJnlXmp0',
+});
+
+app.use(function (req, res, next) {
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://controlevenda.herokuapp.com');
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    // Pass to next layer of middleware
+    next();
+});
 
 app.get('/',function(req, res){
-	//var solvemedia = new Solvemedia('HdETkCNNkpqCIuBAU90dEO4CjZn.5UpT','-6Hb8iRfq3yvLH9Rr80uobcOqswPpMcZ', 'YJzbSgW5YN0b8ECv455mmYoD6Oosza9K');
-	//var inicio = "<html><head><title>Solvemedia test!</title></head><body><form method='POST' action='./validate'>";
-	//var fim = "<input type='submit' value='Submit Form'/></form></body></html>";
-	//res.send(inicio+solvemedia.toHTML()+fim);
-    res.sendFile(path.join(publicDir, 'bitcoin.html'));
+	 res.sendFile(path.join(publicDir, 'index.html'));
+});
+app.get('/bitcoin',function(req, res){
+	 res.sendFile(path.join(publicDir, 'bitcoin.html'));
 });
 
 app.get('/api/genres',function(req, res){
