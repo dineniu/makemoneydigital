@@ -20,9 +20,22 @@ mongoose.connect('mongodb://admin:212230@jello.modulusmongo.net:27017/e5rEqazi')
 var db = mongoose.connection;
 
 app.get('/',function(req, res){
+	var lang = req.query.lang;
         var obj = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
+	if(lang == "pt"){
+	   obj = obj.replace("./verify", "./verificar").replace("SEND CAPTCHA","ENVIAR CAPTCHA");
+	}
 	 res.send(obj);
 });
+app.get('/en',function(req, res){
+        res.redirect('/?lang=en');
+});
+app.get('/pt',function(req, res){
+        res.redirect('/?lang=pt');
+});
+
+
+./verificar
 app.post('/verificar',function(req, res){
 	var solvemedia = new SolveMedia('HdETkCNNkpqCIuBAU90dEO4CjZn.5UpT','-6Hb8iRfq3yvLH9Rr80uobcOqswPpMcZ', 'YJzbSgW5YN0b8ECv455mmYoD6Oosza9K');
 	solvemedia.verify(req.body.adcopy_response,req.body.adcopy_challenge, req.connection.remoteAddress, function(isValid,errorMessage){
