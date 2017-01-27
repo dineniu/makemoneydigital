@@ -26,7 +26,7 @@ body {
     height: 60px;
 }
 
-input{
+input[type=text]{
     color:black;
 }
 
