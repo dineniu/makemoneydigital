@@ -21,7 +21,6 @@ var db = mongoose.connection;
 
 app.get('/',function(req, res){
         var obj = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
-	obj = obj.replace("mensagem-captcha", "Answer captcha to go to CONVERT")
 	if(req.query.lang == "pt"){
 	  obj = obj.replace("./verify", "./verificar").replace("lang: 'en'", "lang: 'pt'").replace("SEND CAPTCHA","ENVIAR CAPTCHA");
 	}
@@ -39,7 +38,7 @@ app.post('/verificar',function(req, res){
 		res.redirect('http://preev.com/btc/brl');
         } else {
                 var obj = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
-		obj = obj.replace("lang: 'en'", "lang: 'pt'").replace("display:none","display:block").replace("mensagem-captcha", "O captcha esta incorreto, tente novamente.");
+		obj = obj.replace("lang: 'en'", "lang: 'pt'").replace("display:none","display:block").replace("Answer captcha to go to CONVERT", "O captcha esta incorreto, tente novamente.");
 	 	res.send(obj);
         }
     });
@@ -51,7 +50,7 @@ app.post('/verify',function(req, res){
             res.redirect('http://preev.com/');
         } else {
             var obj = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
-		obj = obj.replace("display:none","display:block").replace("mensagem-captcha", "O captcha esta incorreto, tente novamente.");
+		obj = obj.replace("display:none","display:block").replace("Answer captcha to go to CONVERT", "O captcha esta incorreto, tente novamente.");
 	 	res.send(obj);
         }
     });
