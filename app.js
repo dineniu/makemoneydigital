@@ -28,7 +28,7 @@ app.get('/',function(req, res){
 	 res.send(obj);
 });
 app.get('/pt',function(req, res){
-        res.redirect('/?lang=pt');
+        res.redirect('/?lang="pt"');
 });
 
 
