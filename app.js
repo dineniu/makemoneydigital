@@ -21,6 +21,7 @@ var db = mongoose.connection;
 
 app.get('/',function(req, res){
         var obj = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
+	obj = obj.replace("mensagem-capcha", "Answer captcha to go to CONVERT")
 	if(req.query.lang == "pt"){
 	  obj = obj.replace("./verify", "./verificar").replace("lang: 'en'", "lang: 'pt'").replace("SEND CAPTCHA","ENVIAR CAPTCHA");
 	}
