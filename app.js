@@ -22,13 +22,10 @@ var db = mongoose.connection;
 app.get('/',function(req, res){
 	var lang = req.query.lang;
         var obj = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
-	if(lang == "pt"){
+	if(lang && lang == "pt"){
 	   obj = obj.replace("./verify", "./verificar").replace("SEND CAPTCHA","ENVIAR CAPTCHA");
 	}
 	 res.send(obj);
-});
-app.get('/en',function(req, res){
-        res.redirect('/?lang=en');
 });
 app.get('/pt',function(req, res){
         res.redirect('/?lang=pt');
