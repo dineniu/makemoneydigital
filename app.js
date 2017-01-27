@@ -27,7 +27,7 @@ app.get('/',function(req, res){
 	 res.send(obj);
 });
 app.get('/pt',function(req, res){
-	req.session.pt = true;
+	//req.session.pt = true;
         res.redirect('/');
 });
 
