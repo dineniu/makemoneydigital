@@ -29,7 +29,7 @@ app.get('/',function(req, res){
 });
 app.get('/pt',function(req, res){
 	req.session.pt = true;
-        res.redirect('/);
+        res.redirect('/');
 });
 
 app.post('/verificar',function(req, res){
