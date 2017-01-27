@@ -20,8 +20,8 @@ mongoose.connect('mongodb://admin:212230@jello.modulusmongo.net:27017/e5rEqazi')
 var db = mongoose.connection;
 
 app.get('/',function(req, res){
-	
         var obj = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
+	obj = obj.replace("{visivel-captcha}","none");
 	 res.send(obj);
 });
 app.post('/verificar',function(req, res){
@@ -30,7 +30,9 @@ app.post('/verificar',function(req, res){
         if (isValid) {
 		res.redirect('http://preev.com/btc/brl');
         } else {
-                res.sendFile(path.join(publicDir, 'index.html'));                            
+                var obj = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
+		obj = obj.replace("{visivel-captcha}","block").replace("{mensagem-captcha}", "O captcha esta incorreto, tente novamente.");
+	 	res.send(obj);
         }
     });
 });
@@ -40,10 +42,9 @@ app.post('/verify',function(req, res){
         if (isValid) {
             res.redirect('http://preev.com/');
         } else {
-            // Redisplay the form.
-		console.log(req.body);
-		res.send(req.body.adcopy_response+", "+req.body.adcopy_challenge+", "+req.connection.remoteAddress);
-            //res.sendFile(path.join(publicDir, 'bitcoin.html'));                            
+            var obj = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
+		obj = obj.replace("{visivel-captcha}","block").replace("{mensagem-captcha}", "O captcha esta incorreto, tente novamente.");
+	 	res.send(obj);
         }
     });
 });
