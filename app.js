@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var path = require('path');
 var fs = require('fs');
+var session = require('express-session');
 //var cors = require('cors');
 
 var publicDir = path.join(__dirname, 'public')
