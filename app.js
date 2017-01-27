@@ -20,11 +20,11 @@ mongoose.connect('mongodb://admin:212230@jello.modulusmongo.net:27017/e5rEqazi')
 var db = mongoose.connection;
 
 app.get('/',function(req, res){
-	var lang = req.query.lang;
+	//var lang = req.query.lang;
         var obj = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
-	if(lang && lang == "pt"){
-	   obj = obj.replace("./verify", "./verificar").replace("SEND CAPTCHA","ENVIAR CAPTCHA");
-	}
+	//if(lang && lang == "pt"){
+	  // obj = obj.replace("./verify", "./verificar").replace("SEND CAPTCHA","ENVIAR CAPTCHA");
+	//}
 	 res.send(obj);
 });
 app.get('/pt',function(req, res){
