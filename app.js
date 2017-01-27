@@ -30,7 +30,7 @@ app.post('/verificar',function(req, res){
 		res.redirect('http://preev.com/btc/brl');
         } else {
                 var obj = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
-		obj = obj.replace("display:none","display:block").replace("mensagem-captcha", "O captcha esta incorreto, tente novamente.");
+		obj = obj.replace("lang: 'en'", "lang: 'pt'").replace("display:none","display:block").replace("mensagem-captcha", "O captcha esta incorreto, tente novamente.");
 	 	res.send(obj);
         }
     });
