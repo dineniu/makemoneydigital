@@ -10,6 +10,9 @@ textarea,
 .mbr-company .list-group-text {
   font-family: 'Raleway', sans-serif;
 }
+.mbr-section-hero .mbr-section-lead{
+    color:#0fc;
+}
 .mbr-footer-content li,
 .mbr-footer .mbr-contacts li {
   font-family: 'Raleway', sans-serif;
