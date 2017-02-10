@@ -21,5 +21,11 @@ app.get('/pt',function(req, res){
     res.redirect('/?lang=' + string);
 });
 
+
+app.get('/ip',function(req, res){
+    var obj = fs.readFileSync(path.join(publicDir, 'ip.html'), 'utf8');
+    res.send(obj);
+});
+
 var port = process.env.PORT || 8080;
 app.listen(port);
