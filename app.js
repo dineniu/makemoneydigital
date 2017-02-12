@@ -27,5 +27,10 @@ app.get('/ip',function(req, res){
     res.send(obj);
 });
 
+app.get('/faucets',function(req, res){
+    var obj = fs.readFileSync(path.join(publicDir, 'faucets.html'), 'utf8');
+    res.send(obj);
+});
+
 var port = process.env.PORT || 8080;
 app.listen(port);
