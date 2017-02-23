@@ -31,6 +31,10 @@ app.get('/faucets',function(req, res){
     var obj = fs.readFileSync(path.join(publicDir, 'faucets.html'), 'utf8');
     res.send(obj);
 });
+app.get('/bonusbitcoin',function(req, res){
+    var obj = fs.readFileSync(path.join(publicDir, 'bonusbitcoin.html'), 'utf8');
+    res.send(obj);
+});
 
 var port = process.env.PORT || 8080;
 app.listen(port);
