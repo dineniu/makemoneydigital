@@ -31,11 +31,15 @@ app.get('/faucets',function(req, res){
     var obj = fs.readFileSync(path.join(publicDir, 'faucets.html'), 'utf8');
     res.send(obj);
 });
+//Bonus faucet
 app.get('/faucetbonusbitcoin',function(req, res){
     var obj = fs.readFileSync(path.join(publicDir, 'faucetbonusbitcoin.html'), 'utf8');
     res.send(obj);
 });
-
+app.get('/converter',function(req, res){
+    var obj = fs.readFileSync(path.join(publicDir, 'converter.html'), 'utf8');
+    res.send(obj);
+});
 app.get('/tutorialbonusbitcoin',function(req, res){
     var obj = fs.readFileSync(path.join(publicDir, 'tutorialbonusbitcoin.html'), 'utf8');
     res.send(obj);
