@@ -31,6 +31,12 @@ app.get('/faucets',function(req, res){
     var obj = fs.readFileSync(path.join(publicDir, 'faucets.html'), 'utf8');
     res.send(obj);
 });
+
+app.get('/apps',function(req, res){
+    var obj = fs.readFileSync(path.join(publicDir, 'apps.html'), 'utf8');
+    res.send(obj);
+});
+
 //Bonus faucet
 app.get('/faucetbonusbitcoin',function(req, res){
     var obj = fs.readFileSync(path.join(publicDir, 'faucetbonusbitcoin.html'), 'utf8');
