@@ -51,5 +51,11 @@ app.get('/tutorialbonusbitcoin',function(req, res){
     res.send(obj);
 });
 
+app.get('/xapo-list-faucet',function(req, res){
+    var obj = fs.readFileSync(path.join(publicDir, 'xapolistfaucet.html'), 'utf8');
+    res.send(obj);
+});
+
+
 var port = process.env.PORT || 8080;
 app.listen(port);
