@@ -1,0 +1,109 @@
+body {
+    background-color: slateblue;
+}
+
+#container {
+    background-color: blue;
+    width: 96%;
+    display: block;
+    margin: 0 2%;
+    height: 1000px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 18px 9px rgba(196,184,196,0.82);
+    -moz-box-shadow: 0px 0px 18px 9px rgba(196,184,196,0.82);
+    box-shadow: 0px 0px 18px 9px rgba(196,184,196,0.82);
+    padding: 5px;
+}
+
+.item {
+    background-color: dodgerblue;
+    max-width: 100%;
+    display: block;
+    margin-bottom: 5px;
+    height: 20%;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.item-wrap{
+    height:80%;
+}
+
+.item-title{
+    width: 100%;
+    height: 20%;
+    text-align:center;
+     font-size:40px;
+     color: red;
+}
+
+.item-img {
+    width: 19.5%;
+    display: inline-block;
+    float: left;
+    margin-right: 1%;
+    height: 100%;
+    border-radius: 2px;
+}
+
+    .item-img img {
+        max-height: 100%;
+    }
+
+.item-description {
+    width: 59%;
+    display: inline-block;
+    float: left;
+    margin-right: 1%;
+    height: 100%;
+    border-radius: 2px;
+}
+
+.item-description-box {
+    width: 32%;
+    display: inline-block;
+    float: left;
+    height: 100%;
+    border: 1px dotted white;
+}
+
+    .item-description-box h4 {
+        width: 100%;
+        height: 20%;
+        display: block;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        align-content: center;
+        font-size:30px;
+    }
+    .item-description-box h3 {
+        color:gold;
+        padding: 4px;
+        margin: 0;
+         font-size:40px;
+    }
+.item-button {
+    width: 19.5%;
+    display: inline-block;
+    float: left;
+    height: 98%;
+    border-radius: 2px;
+    background-color: lightgreen;
+}
+
+    .item-button span {
+        height: 20%;
+        width: 100%;
+        font-weight: bold;
+         font-size:30px;
+    }
+
+    .item-button button {
+        height: 80%;
+        width: 100%;
+        background-color: greenyellow;
+        border: hidden;
+        font-weight: bolder;
+         font-size:40px;
+    }
