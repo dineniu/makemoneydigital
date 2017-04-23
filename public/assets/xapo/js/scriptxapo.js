@@ -21,7 +21,7 @@ function countdown(variavel, constante, span){
 		minuto = minuto < 10 ? "0"+minuto: minuto;
 		var segundo = variavel%60;
 		segundo = segundo < 10 ? "0"+segundo: segundo;
-		$(span).html(minuto+":"+segundo);
+		$("#"+span).html(minuto+":"+segundo);
 		setTimeout(function(){countdown(variavel, constante, span)}, 1000);
 	}
 	else{
