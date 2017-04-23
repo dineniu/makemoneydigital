@@ -1,10 +1,14 @@
 var moon = 5*60;
 
 $('#btnMoonBitcoin').on('click', function(){
-	if(moon == 5*60)
-		countdown(moon, 5*60, '#spnMoonBitcoin');
+	//if(moon == 5*60)
+	//	countdown(moon, 5*60, '#spnMoonBitcoin');
 });
 
+$(".item-button button").on('click',function(){
+var minutos = parseInt($(this).parent().find('span').text().split(' ')[1].split(':')[0]);
+	alert(minutos);
+});
 function countdown(variavel, constante, span){
 	if(variavel != 0){
 		variavel--;
