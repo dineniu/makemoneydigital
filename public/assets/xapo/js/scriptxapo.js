@@ -7,10 +7,10 @@ $('#btnMoonBitcoin').on('click', function(){
 
 $(".item-button button").on('click',function(){
 var minutos = parseInt($(this).parent().find('span').text().split(' ')[1].split(':')[0]);
-	if(minutos == NaN){
-	alert("Nao!");
+	if(minutos){alert(minutos);
+	
 	}else{
-	alert(minutos);
+	alert("Nao!");
 	}
 });
 function countdown(variavel, constante, span){
