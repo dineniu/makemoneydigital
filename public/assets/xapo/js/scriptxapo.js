@@ -23,5 +23,6 @@ function countdown(variavel, constante, span,link){
 	else{
 		variavel = constante;
 		$(link).show();
+		$("#"+span).html("Time: "+(constante/60)+":00");
 	}
 }
