@@ -5,7 +5,9 @@ $(".item-button button").on('click',function(){
     var constante = minutos * 60;
     var link = $(this).find("a");
      link.hide();
-    countdown(segundos,constante,$(this).parent().find('span').attr("id"), link);
+	  if(segundos == constante){
+    		countdown(segundos,constante,$(this).parent().find('span').attr("id"), link);
+	  }
   }
 });
 function countdown(variavel, constante, span,link){
