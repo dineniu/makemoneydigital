@@ -56,7 +56,7 @@ app.get('/xapo-list-faucet',function(req, res){
     res.send(obj);
 });
 
-app.get('/bitcoincollector',funtion(req,res){
+app.get('/bitcoincollector',function(req,res){
     var obj = fs.readFileSync(path.join(publicDir, 'bitcoincollector.html'), 'utf8');
     res.send(obj);
 });
