@@ -57,8 +57,20 @@ app.get('/xapo-list-faucet',function(req, res){
 });
 
 app.get('/bitcoincollector',function(req,res){
-    var obj = fs.readFileSync(path.join(publicDir, 'bitcoincollector.html'), 'utf8');
-    res.send(obj);
+    var request = require('request');
+
+	request({
+  	method: 'POST',
+  	url: 'https://v2.api.xapo.com/accounts/id/transactions?to=to&amount=amount&currency=currency&notes=notes&type=type',
+  	headers: {
+    	'Authorization': 'Bearer b5e7f3e9-e2f2-460b-a741-b0f7f39f15db'
+  	},
+  		body: "{  \"to\": \"3JQoqBrGaQ2r6tZS68fCdKA5j6mwGx2TFk\",  \"amount\": 1,  \"currency\": \"SAT\",  \"notes\": \"Testing\",  \"type\": \"pay\"}"
+	}, function (error, response, body) {
+  	console.log('Status:', response.statusCode);
+  	console.log('Headers:', JSON.stringify(response.headers));
+  	console.log('Response:', body);
+	});
 });
 
 var port = process.env.PORT || 8080;
