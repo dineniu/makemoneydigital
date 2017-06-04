@@ -20,7 +20,7 @@ body {
     max-width: 100%;
     display: block;
     margin-bottom: 5px;
-    height: 20%;
+    height: 15%;
     border-radius: 5px;
     padding: 5px;
 }
@@ -42,7 +42,7 @@ body {
     display: inline-block;
     float: left;
     margin-right: 1%;
-    height: 70%;
+    height: 60%;
     border-radius: 2px;
 }
 
