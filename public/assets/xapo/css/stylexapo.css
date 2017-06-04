@@ -64,7 +64,7 @@ body {
     display: inline-block;
     float: left;
     height: 100%;
-    border: 1px dotted white;
+    border: 1px dashed white;
 }
 
     .item-description-box h4 {
