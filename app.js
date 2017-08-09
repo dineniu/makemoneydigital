@@ -46,6 +46,12 @@ app.get('/converter',function(req, res){
     var obj = fs.readFileSync(path.join(publicDir, 'converter.html'), 'utf8');
     res.send(obj);
 });
+
+app.get('/conversor',function(req, res){
+    var obj = fs.readFileSync(path.join(publicDir, 'conversor.html'), 'utf8');
+    res.send(obj);
+});
+
 app.get('/tutorialbonusbitcoin',function(req, res){
     var obj = fs.readFileSync(path.join(publicDir, 'tutorialbonusbitcoin.html'), 'utf8');
     res.send(obj);
