@@ -1,10 +1,64 @@
+<!DOCTYPE html>
 <html>
-<head><title></title></head>
-<body>
+<head>
+    <title>Save to Drive Demo: Explicit Render</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js" type="text/javascript"></script>
 
-<script src="assets/web/assets/jquery/jquery.min.js"></script>
-<script>
-  $(body).css("background-color","blue");
-</script>
+</head>
+<body>
+    Valor:
+     <input id="txtValor" type="text" /><br />
+    Clicks:
+<input id="txtClick" type="text" /><br />
+    Tempo: 
+<input id="txtHora" type="text" /><br />
+    Valor:
+    <label id="lblValor"></label><br />
+    Rate:
+    <label id="lblRate"></label><br />
+Média p/Click:
+    <label id="lblMediaClick"></label><br />
+Semanal:
+    <label id="lblValorSemana"></label><br />
+<label id="lblDolarSemana"></label>
+    <script>
+
+        jQuery(document).ready(function () {
+            function lastSunday(d) {
+                var d = d.replace(/(^\d{4})(\d{2})(\d{2}$)/, '$1/$2/$3');
+                d = new Date(d);
+                d.setDate(d.getDate() - d.getDay());
+                return d;
+            }
+            var date = new Date();
+            function calcular() {
+                var clicks = parseInt($("#txtClick").val());
+                var tempo = $("#txtHora").val().split(":");
+                var dia = 6 - tempo[0];
+                var hora = 23 - tempo[1];
+                var min = 60 - tempo[2];
+
+                var resultado = parseInt(clicks / ((dia * 24) + (hora + min / 60)));
+                var valor = parseFloat($("#txtValor").val()) / (dia * 24 + hora + min / 60);
+valor = parseFloat(Math.round(valor * 100000000) / 100000000).toFixed(8);
+var media = parseFloat(Math.round((valor/resultado) * 100000000) / 100000000).toFixed(8);
+var totalSemana = 7 * 24 * media * resultado;
+                $("#lblRate").html(resultado);
+                $("#lblValor").html(valor);
+$("#lblMediaClick").html(media);
+$("#lblValorSemana").html(totalSemana);
+$.ajax({
+url: "https://blockchain.info/tobtc?currency=USD&value=1",
+complete: function(data) {
+var dolar = parseFloat(data.responseText);
+var btcDolar = parseFloat(Math.round((totalSemana/dolar) * 100) / 100).toFixed(2);
+$("#lblDolarSemana").html(btcDolar);
+}
+});
+            }
+            $("input").on('keyup', calcular);
+        });
+
+    </script>
 </body>
 </html>
