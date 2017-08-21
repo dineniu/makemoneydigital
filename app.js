@@ -47,6 +47,13 @@ app.get('/faucetbonusbitcoin',function(req, res){
     var obj = fs.readFileSync(path.join(publicDir, 'faucetbonusbitcoin.html'), 'utf8');
     res.send(obj);
 });
+
+app.get('/bitsler',function(req, res){
+    var obj = fs.readFileSync(path.join(publicDir, 'bitsler.html'), 'utf8');
+    res.send(obj);
+});
+
+
 app.get('/converter',function(req, res){
     var obj = fs.readFileSync(path.join(publicDir, 'converter.html'), 'utf8');
     res.send(obj);
