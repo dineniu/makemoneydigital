@@ -48,8 +48,8 @@ app.get('/faucetbonusbitcoin',function(req, res){
     res.send(obj);
 });
 
-app.get('/bitsler',function(req, res){
-    var obj = fs.readFileSync(path.join(publicDir, 'bitsler.html'), 'utf8');
+app.get('/freebitcoin',function(req, res){
+    var obj = fs.readFileSync(path.join(publicDir, 'freebitcoin.html'), 'utf8');
     res.send(obj);
 });
 
