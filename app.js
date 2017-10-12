@@ -27,6 +27,11 @@ app.get('/ip',function(req, res){
     res.send(obj);
 });
 
+app.get('/ipbr',function(req, res){
+    var obj = fs.readFileSync(path.join(publicDir, 'ipbr.html'), 'utf8');
+    res.send(obj);
+});
+
 app.get('/faucets',function(req, res){
     var obj = fs.readFileSync(path.join(publicDir, 'faucets.html'), 'utf8');
     res.send(obj);
