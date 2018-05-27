@@ -53,8 +53,8 @@ app.get('/apps-steem',function(req, res){
 });
 
 //Bonus faucet
-app.get('/faucetbonusbitcoin',function(req, res){
-    var obj = fs.readFileSync(path.join(publicDir, 'faucetbonusbitcoin.html'), 'utf8');
+app.get('/privacy-policy-recorder',function(req, res){
+    var obj = fs.readFileSync(path.join(publicDir, 'privacypolicyrecorder.html'), 'utf8');
     res.send(obj);
 });
 
