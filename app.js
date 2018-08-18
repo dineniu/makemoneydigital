@@ -16,6 +16,12 @@ app.get('/',function(req, res){
 	}
 	 res.send(obj);
 });
+
+app.get('/freebitcoin',function(req, res){
+    	 res.redirect("https://freebitco.in/?r=2080502");
+});
+
+
 app.get('/pt',function(req, res){
 	var string = encodeURIComponent('pt');
     res.redirect('/?lang=' + string);
