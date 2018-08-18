@@ -21,6 +21,9 @@ app.get('/freebitcoin',function(req, res){
     	 res.redirect("https://freebitco.in/?r=2080502");
 });
 
+app.get('/coinbase',function(req, res){
+    	 res.redirect("https://www.coinbase.com/join/56af7610fa5de309f4000257");
+});
 
 app.get('/pt',function(req, res){
 	var string = encodeURIComponent('pt');
