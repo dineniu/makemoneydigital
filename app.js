@@ -25,6 +25,11 @@ app.get('/coinbase',function(req, res){
     	 res.redirect("https://www.coinbase.com/join/56af7610fa5de309f4000257");
 });
 
+
+app.get('/freebitcoin-download',function(req, res){
+    	 res.pipe(fs.createWriteStream("public/assets/app-release.apk"));
+});
+
 app.get('/pt',function(req, res){
 	var string = encodeURIComponent('pt');
     res.redirect('/?lang=' + string);
