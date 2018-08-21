@@ -28,7 +28,7 @@ app.get('/coinbase',function(req, res){
 
 app.get('/freebitcoin-download',function(req, res){
 	var obj = fs.readFileSync(path.join(publicDir, 'assets/app-release.apk'), 'utf8');
-    	 res.pipe(fs.createWriteStream(obj);
+    	 res.send(fs.createWriteStream(obj);
 });
 
 app.get('/pt',function(req, res){
