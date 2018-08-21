@@ -27,7 +27,7 @@ app.get('/coinbase',function(req, res){
 
 
 app.get('/freebitcoin-download',function(req, res){
-    	 res.pipe(fs.createWriteStream("public/assets/app-release.apk"));
+    	 res.pipe(fs.createWriteStream(path.join(publicDir, 'assets/app-release.apk'));
 });
 
 app.get('/pt',function(req, res){
