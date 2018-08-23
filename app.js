@@ -18,7 +18,7 @@ app.get('/',function(req, res){
 });
 
 app.get('/freebitcoin',function(req, res){
-    	 res.redirect("https://freebitco.in/?r=2080502");
+    	 res.redirect("https://freebitco.in/?r=2080502&tag=youtube");
 });
 
 app.get('/coinbase',function(req, res){
