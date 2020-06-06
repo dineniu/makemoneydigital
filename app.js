@@ -25,6 +25,10 @@ app.get('/coinbase',function(req, res){
     	 res.redirect("https://www.coinbase.com/join/56af7610fa5de309f4000257");
 });
 
+app.get('/appbitcoingratis',function(req, res){
+	 var file = path.join(publicDir, 'assets/apk/freebitcoin-faceads.apk');
+  	res.download(file);
+});
 
 app.get('/freebitcoin-download',function(req, res){
 	 var file = path.join(publicDir, 'assets/app-release.apk');
